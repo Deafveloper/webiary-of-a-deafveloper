@@ -1,6 +1,9 @@
 # webiary-of-a-deafveloper
 A composition-notebook website blending code, creativity, kids’ doodles, and cloud learning. A digital webiary written by Deafveloper.
 
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
+
 # Webiary of a Deafveloper  
 _written by Deafveloper._
 
@@ -118,3 +121,12 @@ Rough structure:
   styles.css   ← notebook + scrapbook look
   script.js    ← page navigation + toggles
   README.md    ← this torn diary page
+
+
+~~~~~~~~~~~~~~~~~~~~~~~///////~~~~~~~~~~~~~~~~~~~~~
+~~~~~///////~~~~~~~~~~~~~/////////~~~~~///////~~~~~
+///////~~~~~~~//////////////////////~~~~~~~///////~
+~~~~~~~~~~///////////////~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
