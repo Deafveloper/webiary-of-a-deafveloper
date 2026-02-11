@@ -11,7 +11,8 @@
 <body>
   <a class="skip-link" href="#book">Skip to notebook pages</a>
   <div class="cover-shell">
-    <main class="cover" aria-labelledby="cover-title">
+    <div class="notebook-wrap">
+      <main class="cover" aria-labelledby="cover-title">
       <div class="cover__spine" aria-hidden="true"></div>
       <div class="cover__label">
         <p class="label__tag">Composition Notebook</p>
@@ -23,19 +24,68 @@
         Open notebook
       </button>
     </main>
+
+    <nav class="tab-bar tab-bar--cover" aria-label="Notebook Sections">
+      <button class="tab" data-target="home"><span class="tab__label">Home</span></button>
+      <button class="tab" data-target="teaching"><span class="tab__label">Teaching</span></button>
+      <button class="tab" data-target="projects"><span class="tab__label">Projects</span></button>
+      <button class="tab" data-target="writing"><span class="tab__label">Writing</span></button>
+      <button class="tab" data-target="about"><span class="tab__label">About</span></button>
+      <span class="tab tab--blank" aria-hidden="true"></span>
+      <span class="tab tab--blank" aria-hidden="true"></span>
+    </nav>
+    </div>
   </div>
   <main class="book is-hidden" id="book" aria-hidden="true">
+
+    <nav class="tab-bar" aria-label="Notebook Sections">
+      <button class="tab" data-target="home"><span class="tab__label">Home</span></button>
+      <button class="tab" data-target="teaching"><span class="tab__label">Teaching</span></button>
+      <button class="tab" data-target="projects"><span class="tab__label">Projects</span></button>
+      <button class="tab" data-target="writing"><span class="tab__label">Writing</span></button>
+      <button class="tab" data-target="about"><span class="tab__label">About</span></button>
+      <span class="tab tab--blank" aria-hidden="true"></span>
+      <span class="tab tab--blank" aria-hidden="true"></span>
+    </nav>
+
     <div class="page-strip">
       <section class="page" data-section="home" data-page="1">
         <div class="page-inner">
-          <h2 tabindex="-1">Welcome to my webiary</h2>
+          <h2 tabindex="-1">Welcome to my Webiary</h2>
           <p>This is my composition-notebook style webiary — a place for stories, experiments, and the work behind the work.</p>
           <p class="page-note">Tip: use the “Open notebook” button on the cover to start reading.</p>
         </div>
       </section>
+
+      <section class="page" data-section="teaching" data-page="2">
+        <div class="page-inner">
+          <h2 tabindex="-1">Teaching</h2>
+          <p>This section holds stories and lessons from Deaf Kids Code, applied machine learning, and turning lived experience into technical skill.</p>
+        </div>
+      </section>
+
+      <section class="page" data-section="projects" data-page="3">
+        <div class="page-inner">
+          <h2 tabindex="-1">Projects</h2>
+          <p>Full-stack builds, experiments, and notebook drafts of ideas becoming systems.</p>
+        </div>
+      </section>
+
+      <section class="page" data-section="writing" data-page="4">
+        <div class="page-inner">
+          <h2 tabindex="-1">Writing</h2>
+          <p>Long-form reflections, webiary entries, and rabbit-hole explorations.</p>
+        </div>
+      </section>
+
+      <section class="page" data-section="about" data-page="5">
+        <div class="page-inner">
+          <h2 tabindex="-1">About</h2>
+          <p>About the Deafveloper, this notebook, and the work behind the work.</p>
+        </div>
+      </section>
     </div>
   </main>
-</main>
   <script src="script.js"></script>
   <noscript>
     <p class="noscript">This site uses JavaScript for the notebook interaction. You can still read the content, but the cover animation may not work.</p>

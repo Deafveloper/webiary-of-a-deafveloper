@@ -69,10 +69,24 @@ body {
   align-items: center;
   min-height: 100vh;
   padding: clamp(1rem, 3vw, 2rem);
+  overflow: visible;
+}
+
+.notebook-wrap {
+  position: relative;
+  width: min(70vw, 660px);
+  aspect-ratio: 3 / 4;
+  overflow: visible;
+}
+
+.notebook-wrap > .cover {
+  width: 100%;
+  height: 100%;
 }
 
 .cover {
   position: relative;
+  z-index: 5;
   width: min(70vw, 660px);
   aspect-ratio: 3 / 4;
   background-color: var(--cover-bg);
@@ -294,6 +308,7 @@ body {
   min-height: 100vh;
   padding: 0;
   background: #f7f4ee;
+  position: relative;
 
   /* Larger, landscape “open notebook” */
   width: min(var(--book-width), var(--book-max-width));
@@ -303,13 +318,195 @@ body {
 
   border: 3px solid var(--cover-ink);
   border-radius: 14px;
-  overflow: hidden;
+  overflow: visible;
   box-shadow: 0 14px 40px rgba(0, 0, 0, 0.22);
+}
+
+/* Border overlay so tabs can tuck behind the notebook edge */
+.book::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 3px solid var(--cover-ink);
+  border-radius: 14px;
+  pointer-events: none;
+  z-index: 6;
 }
 
 .book:not(.is-hidden) {
   display: flex;
 }
+
+/* Tab dividers (Option C: alternating-height side tabs) */
+.tab-bar {
+  position: absolute;
+  top: 18%;
+  right: -18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  z-index: 2;
+}
+
+/* Cover tabs: stick out while notebook is CLOSED */
+.tab-bar--cover {
+  position: absolute;
+  top: 18%;
+  right: -18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 2;
+}
+
+.tab {
+  appearance: none;
+  border: 2px solid var(--cover-ink);
+  background: var(--label-paper);
+  background-color: rgba(248, 248, 248, 0.85);
+  backdrop-filter: blur(2px);
+  color: var(--cover-ink);
+  font-weight: 800;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+
+  width: 142px;
+  text-align: left;
+  padding: 0.65rem 0.9rem;
+
+  border-radius: 14px 0 0 14px;
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.18);
+  cursor: pointer;
+
+  transform: translateX(0);
+  transition: transform 0.18s ease, filter 0.18s ease;
+}
+
+.tab--blank {
+  display: block;
+  width: 142px;
+  padding: 0.85rem 0.9rem;
+  border: 2px dashed rgba(11, 11, 11, 0.35);
+  border-right: none;
+  border-radius: 14px 0 0 14px;
+  background: rgba(248, 248, 248, 0.38);
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.14);
+}
+
+.tab--blank:hover {
+  transform: none;
+  cursor: default;
+}
+
+.tab:hover {
+  transform: translateX(-6px) translateY(var(--tab-y, 0px));
+}
+
+.tab:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 3px;
+}
+
+.tab.is-active {
+  filter: brightness(0.96);
+  transform: translateX(-10px) translateY(var(--tab-y, 0px));
+}
+
+/* --- OPEN notebook tabs: taped onto paper + expand to reveal label --- */
+.book .tab-bar:not(.tab-bar--cover) .tab {
+  position: relative;
+  overflow: hidden;
+
+  /* Collapsed state: mostly just the color strip */
+  width: 56px;
+  padding-right: 0.6rem;
+
+  /* Preserve divider Y-offset */
+  transform: translateX(0) translateY(var(--tab-y, 0px));
+  transition: width 0.22s ease, transform 0.18s ease, filter 0.18s ease;
+}
+
+.book .tab-bar:not(.tab-bar--cover) .tab .tab__label {
+  display: inline-block;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(10px);
+  transition: opacity 0.18s ease, transform 0.22s ease;
+}
+
+.book .tab-bar:not(.tab-bar--cover) .tab:hover,
+.book .tab-bar:not(.tab-bar--cover) .tab:focus-visible {
+  width: 152px;
+  transform: translateX(-6px) translateY(var(--tab-y, 0px));
+}
+
+.book .tab-bar:not(.tab-bar--cover) .tab:hover .tab__label,
+.book .tab-bar:not(.tab-bar--cover) .tab:focus-visible .tab__label {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Tape effect (two small pieces) */
+.book .tab-bar:not(.tab-bar--cover) .tab::before,
+.book .tab-bar:not(.tab-bar--cover) .tab::after {
+  content: "";
+  position: absolute;
+  left: -10px;
+  width: 44px;
+  height: 18px;
+  pointer-events: none;
+  z-index: 2;
+
+  background: rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.18);
+  border-radius: 5px;
+  mix-blend-mode: multiply;
+}
+
+.book .tab-bar:not(.tab-bar--cover) .tab::before {
+  top: 7px;
+  transform: rotate(-7deg);
+}
+
+.book .tab-bar:not(.tab-bar--cover) .tab::after {
+  bottom: 7px;
+  transform: rotate(6deg);
+}
+
+.book .tab-bar:not(.tab-bar--cover) .tab .tab__label {
+  position: relative;
+  z-index: 3;
+}
+
+/* Keep active state consistent for open tabs while preserving Y-offset */
+.book .tab-bar:not(.tab-bar--cover) .tab.is-active {
+  transform: translateX(-10px) translateY(var(--tab-y, 0px));
+}
+
+/* Highlighter tab colors */
+.tab-bar .tab:nth-child(1) { background-color: rgba(255, 245, 157, 0.82); } /* yellow */
+.tab-bar .tab:nth-child(2) { background-color: rgba(185, 246, 202, 0.82); } /* green */
+.tab-bar .tab:nth-child(3) { background-color: rgba(167, 255, 235, 0.82); } /* mint */
+.tab-bar .tab:nth-child(4) { background-color: rgba(130, 177, 255, 0.82); } /* blue */
+.tab-bar .tab:nth-child(5) { background-color: rgba(234, 128, 252, 0.82); } /* pink/purple */
+
+/* Keep text readable on brighter colors */
+.tab-bar .tab:nth-child(4),
+.tab-bar .tab:nth-child(5) {
+  color: #0b0b0b;
+}
+
+/* Alternate heights + slight offsets so it feels like real dividers */
+.tab-bar .tab:nth-child(1) { padding-block: 0.95rem; --tab-y: 0px; }
+.tab-bar .tab:nth-child(2) { padding-block: 0.70rem; --tab-y: 2px; }
+.tab-bar .tab:nth-child(3) { padding-block: 1.05rem; --tab-y: -2px; }
+.tab-bar .tab:nth-child(4) { padding-block: 0.75rem; --tab-y: 3px; }
+.tab-bar .tab:nth-child(5) { padding-block: 0.90rem; --tab-y: -1px; }
+
+
 
 .page-strip {
   display: flex;
@@ -321,6 +518,8 @@ body {
   scroll-snap-type: x mandatory;
   padding: 0;
   position: relative;
+  clip-path: inset(0 round 12px);
+  z-index: 5;
 }
 
 .page-strip::before {
@@ -356,7 +555,17 @@ body {
   width: 100%;
   height: 100%;
   background:
+    /* Red margin line */
+    linear-gradient(
+      to right,
+      transparent calc(var(--margin-x, var(--margin-line, clamp(1rem, 6vw, 2.2rem))) - 1px),
+      rgba(214, 64, 64, 0.6) calc(var(--margin-x, var(--margin-line, clamp(1rem, 6vw, 2.2rem))) - 1px),
+      rgba(214, 64, 64, 0.6) calc(var(--margin-x, var(--margin-line, clamp(1rem, 6vw, 2.2rem))) + 1px),
+      transparent calc(var(--margin-x, var(--margin-line, clamp(1rem, 6vw, 2.2rem))) + 1px)
+    ),
+    /* Light wash */
     linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.12)),
+    /* Notebook lines */
     repeating-linear-gradient(
       to bottom,
       #f7f4ee 0,
@@ -373,13 +582,18 @@ body {
 .page-inner::before {
   content: "";
   position: absolute;
-  top: 0;
-  bottom: 0;
-  left: var(--margin-line, clamp(1rem, 6vw, 2.2rem));
-  width: 2px;
-  background: rgba(214, 64, 64, 0.6);
-  opacity: 0.85;
+  inset: 0;
+  pointer-events: none;
   z-index: 4;
+
+  /* Corner doodle overlay */
+  background-image: var(--corner-scribble, url("assets/textures/cornerscribble1.png"));
+  background-repeat: no-repeat;
+  background-position: top left;
+  background-size: 220px auto;
+
+  opacity: var(--scribble-opacity);
+  mix-blend-mode: multiply;
 }
 
 .page-inner::after {
@@ -389,13 +603,11 @@ body {
   pointer-events: none;
   z-index: 2;
 
-  /* Paper grain + corner doodle overlays */
-  background-image:
-    var(--paper-grain),
-    var(--corner-scribble, url("assets/textures/cornerscribble1.png"));
-  background-repeat: repeat, no-repeat;
-  background-position: center, top left;
-  background-size: 420px 420px, 220px auto;
+  /* Paper grain overlay */
+  background-image: var(--paper-grain);
+  background-repeat: repeat;
+  background-position: center;
+  background-size: 420px 420px;
 
   opacity: var(--grain-opacity);
   mix-blend-mode: multiply;
@@ -403,10 +615,12 @@ body {
 
 .page:nth-child(odd) .page-inner {
   --margin-line: clamp(1rem, 6vw, 2.2rem);
+  --margin-x: var(--margin-line);
 }
 
 .page:nth-child(even) .page-inner {
-  --margin-line: clamp(0.9rem, 5.5vw, 2rem);
+  --margin-line: clamp(1rem, 6vw, 2.2rem);
+  --margin-x: calc(100% - var(--margin-line));
 }
 
 .page:nth-child(1) .page-inner { --corner-scribble: url("assets/textures/cornerscribble1.png"); }
@@ -415,11 +629,16 @@ body {
 .page:nth-child(4) .page-inner { --corner-scribble: url("assets/textures/cornerscribble4.png"); }
 .page:nth-child(5) .page-inner { --corner-scribble: url("assets/textures/cornerscribble5.png"); }
 
-/* Alternate scribble corner placement for variety */
-.page:nth-child(even) .page-inner::after {
-  background-position: center, bottom right;
+.page:nth-child(even) .page-inner::before {
+  background-position: bottom right;
 }
 
+.page:nth-child(n+6) .page-inner::before {
+  background-image: none;
+  opacity: 0;
+}
+
+/* Alternate scribble corner placement for variety */
 .page-inner h2 {
   position: relative;
   z-index: 6;
@@ -528,6 +747,39 @@ body {
   .page {
     flex: 0 0 100%;
     min-width: 100%;
+  }
+
+  .tab-bar {
+    top: 10px;
+    right: 10px;
+    left: 10px;
+    flex-direction: row;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .tab {
+    width: auto;
+    padding: 0.55rem 0.85rem;
+    border-radius: 999px;
+    box-shadow: 0 8px 14px rgba(0, 0, 0, 0.16);
+  }
+
+  .tab-bar--cover {
+    position: absolute;
+    top: auto;
+    bottom: -54px;
+    left: 10px;
+    right: 10px;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .tab--blank {
+    width: auto;
+    padding: 0.55rem 0.85rem;
+    border-radius: 999px;
+    border-right: 2px dashed rgba(11, 11, 11, 0.35);
   }
 }
 
