@@ -6,8 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Webiary of a Deafveloper</title>
   <link rel="stylesheet" href="style.css">
+  <meta name="description" content="Webiary of a Deafveloper — a composition-notebook style blog and portfolio.">
 </head>
 <body>
+  <a class="skip-link" href="#book">Skip to notebook pages</a>
   <div class="cover-shell">
     <main class="cover" aria-labelledby="cover-title">
       <div class="cover__spine" aria-hidden="true"></div>
@@ -17,19 +19,26 @@
       </div>
       <span class="cover__doodle cover__doodle--star" aria-hidden="true"></span>
       <span class="cover__doodle cover__doodle--heart" aria-hidden="true"></span>
-      <button class="cover__open-button" type="button">Open notebook</button>
+      <button class="cover__open-button" type="button" aria-controls="book" aria-expanded="false">
+        Open notebook
+      </button>
     </main>
   </div>
-  <main class="book is-hidden" id="book">
+  <main class="book is-hidden" id="book" aria-hidden="true">
     <div class="page-strip">
       <section class="page" data-section="home" data-page="1">
         <div class="page-inner">
           <h2 tabindex="-1">Welcome to my webiary</h2>
-          <p>Placeholder text for your first page. Add your stories, notes, or doodles here soon.</p>
+          <p>This is my composition-notebook style webiary — a place for stories, experiments, and the work behind the work.</p>
+          <p class="page-note">Tip: use the “Open notebook” button on the cover to start reading.</p>
         </div>
       </section>
     </div>
   </main>
+</main>
   <script src="script.js"></script>
+  <noscript>
+    <p class="noscript">This site uses JavaScript for the notebook interaction. You can still read the content, but the cover animation may not work.</p>
+  </noscript>
 </body>
 </html>

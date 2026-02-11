@@ -6,6 +6,16 @@
   --label-line: #cfcfcf;
   --spine: #1a1617;
   --shadow: 0 14px 40px rgba(0, 0, 0, 0.32);
+
+  --book-width: 92vw;
+  --book-max-width: 1200px;
+  --book-max-height: 92vh;
+  --book-aspect: 16 / 10;
+
+  --paper-grain: url("assets/textures/paper-grain.png");
+  --center-crease: url("assets/textures/center-crease.png");
+  --grain-opacity: 0.18;
+  --scribble-opacity: 0.45;
 }
 
 * {
@@ -18,6 +28,39 @@ body {
   background: #ffffff;
   font-family: "Helvetica Neue", Arial, sans-serif;
   color: var(--cover-ink);
+}
+
+.skip-link {
+  position: absolute;
+  left: 0.75rem;
+  top: 0.75rem;
+  padding: 0.5rem 0.85rem;
+  background: #0a0a0a;
+  color: #ffffff;
+  border-radius: 10px;
+  text-decoration: none;
+  transform: translateY(-200%);
+  transition: transform 0.2s ease;
+  z-index: 999;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.noscript {
+  max-width: 70ch;
+  margin: 1rem auto;
+  padding: 0.75rem 1rem;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  background: #fff7d6;
+}
+
+.page-note {
+  margin-top: 0.75rem;
+  font-size: 0.95rem;
+  opacity: 0.85;
 }
 
 .cover-shell {
@@ -109,6 +152,8 @@ body {
 }
 
 .label__subtitle {
+  position: relative;
+  z-index: 6;
   margin: 0 0 0.8rem;
   font-size: 0.95rem;
   font-style: italic;
@@ -247,17 +292,19 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  padding: clamp(1rem, 3vw, 2rem);
-  background: #ffffff;
-  width: min(70vw, 660px);
-  aspect-ratio: 3 / 4;
-  max-height: 86vh;
+  padding: 0;
+  background: #f7f4ee;
+
+  /* Larger, landscape “open notebook” */
+  width: min(var(--book-width), var(--book-max-width));
+  aspect-ratio: var(--book-aspect);
+  max-height: var(--book-max-height);
   margin: 0 auto;
+
   border: 3px solid var(--cover-ink);
-  border-radius: 10px;
+  border-radius: 14px;
   overflow: hidden;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
-  background: #f8f8f8;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.22);
 }
 
 .book:not(.is-hidden) {
@@ -276,15 +323,32 @@ body {
   position: relative;
 }
 
+.page-strip::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: clamp(8px, 2vw, 14px);
+  transform: translateX(-50%);
+  background:
+    var(--center-crease) center / 140% 100% no-repeat,
+    linear-gradient(90deg, rgba(0, 0, 0, 0.06), transparent),
+    linear-gradient(270deg, rgba(0, 0, 0, 0.06), transparent);
+  pointer-events: none;
+  z-index: 3;
+  mix-blend-mode: multiply;
+}
+
 .page {
-  flex: 0 0 100%;
-  min-width: 100%;
+  flex: 0 0 50%;
+  min-width: 50%;
   scroll-snap-align: start;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100%;
-  padding: clamp(0.5rem, 1vw, 0.9rem);
+  padding: 0;
 }
 
 .page-inner {
@@ -292,19 +356,17 @@ body {
   width: 100%;
   height: 100%;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.1)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.12)),
     repeating-linear-gradient(
       to bottom,
-      #f7f6f4 0,
-      #f7f6f4 24px,
-      #c7d4e8 24px,
-      #c7d4e8 25px
+      #f7f4ee 0,
+      #f7f4ee 26px,
+      #b8cbe8 26px,
+      #b8cbe8 27px
     );
-  border-radius: 12px;
+  border-radius: 0;
   padding: clamp(1.4rem, 3vw, 2.4rem) clamp(1.6rem, 3vw, 2.6rem);
-  box-shadow:
-    inset 0 0 0 1px rgba(0, 0, 0, 0.04),
-    0 6px 14px rgba(0, 0, 0, 0.12);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.04);
   overflow: hidden;
 }
 
@@ -317,21 +379,25 @@ body {
   width: 2px;
   background: rgba(214, 64, 64, 0.6);
   opacity: 0.85;
+  z-index: 4;
 }
 
-.page-strip::before {
+.page-inner::after {
   content: "";
   position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  width: clamp(8px, 2vw, 14px);
-  transform: translateX(-50%);
-  background:
-    linear-gradient(90deg, rgba(0, 0, 0, 0.05), transparent),
-    linear-gradient(270deg, rgba(0, 0, 0, 0.05), transparent);
+  inset: 0;
   pointer-events: none;
-  z-index: 1;
+  z-index: 2;
+
+  /* Paper grain + corner doodle overlays */
+  background-image:
+    var(--paper-grain),
+    var(--corner-scribble, url("assets/textures/cornerscribble1.png"));
+  background-repeat: repeat, no-repeat;
+  background-position: center, top left;
+  background-size: 420px 420px, 220px auto;
+
+  opacity: var(--grain-opacity);
   mix-blend-mode: multiply;
 }
 
@@ -343,17 +409,34 @@ body {
   --margin-line: clamp(0.9rem, 5.5vw, 2rem);
 }
 
+.page:nth-child(1) .page-inner { --corner-scribble: url("assets/textures/cornerscribble1.png"); }
+.page:nth-child(2) .page-inner { --corner-scribble: url("assets/textures/cornerscribble2.png"); }
+.page:nth-child(3) .page-inner { --corner-scribble: url("assets/textures/cornerscribble3.png"); }
+.page:nth-child(4) .page-inner { --corner-scribble: url("assets/textures/cornerscribble4.png"); }
+.page:nth-child(5) .page-inner { --corner-scribble: url("assets/textures/cornerscribble5.png"); }
+
+/* Alternate scribble corner placement for variety */
+.page:nth-child(even) .page-inner::after {
+  background-position: center, bottom right;
+}
+
 .page-inner h2 {
+  position: relative;
+  z-index: 6;
   margin: 0 0 1rem;
   font-size: clamp(1.4rem, 3vw, 2rem);
 }
 
 .page-inner h3 {
+  position: relative;
+  z-index: 6;
   margin: 1rem 0 0.35rem;
   font-size: clamp(1.1rem, 2.2vw, 1.35rem);
 }
 
 .page-inner p {
+  position: relative;
+  z-index: 6;
   margin: 0;
   max-width: 60ch;
   line-height: 1.6;
@@ -403,11 +486,13 @@ body {
 }
 
 .page-nav--prev {
-  left: -64px;
+  left: 14px;
+  z-index: 5;
 }
 
 .page-nav--next {
-  right: -64px;
+  right: 14px;
+  z-index: 5;
 }
 
 .page-nav:disabled {
@@ -433,6 +518,19 @@ body {
   margin-right: 0.35rem;
 }
 
+@media (max-width: 860px) {
+  .book {
+    width: 92vw;
+    aspect-ratio: 3 / 4;
+    max-height: 84vh;
+  }
+
+  .page {
+    flex: 0 0 100%;
+    min-width: 100%;
+  }
+}
+
 @media (max-width: 640px) {
   .cover {
     width: 88vw;
@@ -450,10 +548,10 @@ body {
   }
 
   .book {
-    padding: clamp(0.75rem, 3vw, 1.5rem);
+    padding: 0;
     width: 88vw;
     aspect-ratio: 3 / 4;
-    max-height: 80vh;
+    max-height: 84vh;
   }
 }
 
