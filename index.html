@@ -1,94 +1,355 @@
-<!-- Main entry for Webiary of a Deafveloper -->
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webiary of a Deafveloper</title>
-  <link rel="stylesheet" href="style.css">
-  <meta name="description" content="Webiary of a Deafveloper — a composition-notebook style blog and portfolio.">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Destiny O'Connor — The Deafveloper</title>
+  <meta name="description" content="Destiny O'Connor — Deaf technologist, educator, and community builder. A scrapbook road trip through my projects, work, and writing." />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%232a2320'/%3E%3Ctext x='50' y='68' font-size='56' text-anchor='middle'%3E%F0%9F%8C%B4%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Patrick+Hand&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <a class="skip-link" href="#book">Skip to notebook pages</a>
-  <div class="cover-shell">
-    <div class="notebook-wrap">
-      <main class="cover" aria-labelledby="cover-title">
-      <div class="cover__spine" aria-hidden="true"></div>
-      <div class="cover__label">
-        <p class="label__tag">Composition Notebook</p>
-        <img class="label__sticker" src="assets/media/webairy.png" alt="Webiary of a Deafveloper sticker" loading="lazy">
+  <a class="skip-link" href="#map">Skip to site map</a>
+
+  <header class="site-header">
+    <a class="site-header__logo" href="#top">
+      Destiny O'Connor <span>the Deafveloper</span>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#resume">Resume</a>
+      <a href="#links">Links</a>
+      <a class="is-notebook" href="notebook.html">Blog ✎</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <!-- ============================= HERO ============================= -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__sun" aria-hidden="true"></div>
+      <div class="hero__skyline" aria-hidden="true">
+        <svg viewBox="0 0 800 120" preserveAspectRatio="none">
+          <rect x="10" y="60" width="30" height="60" fill="#33302c"/>
+          <rect x="50" y="40" width="22" height="80" fill="#33302c"/>
+          <rect x="80" y="70" width="26" height="50" fill="#33302c"/>
+          <rect x="120" y="30" width="18" height="90" fill="#33302c"/>
+          <rect x="150" y="55" width="34" height="65" fill="#33302c"/>
+          <rect x="600" y="50" width="24" height="70" fill="#33302c"/>
+          <rect x="634" y="65" width="20" height="55" fill="#33302c"/>
+          <rect x="664" y="35" width="18" height="85" fill="#33302c"/>
+          <rect x="694" y="58" width="28" height="62" fill="#33302c"/>
+          <rect x="730" y="45" width="20" height="75" fill="#33302c"/>
+        </svg>
       </div>
-      <span class="cover__doodle cover__doodle--star" aria-hidden="true"></span>
-      <span class="cover__doodle cover__doodle--heart" aria-hidden="true"></span>
-      <button class="cover__open-button" type="button" aria-controls="book" aria-expanded="false">
-        Open notebook
-      </button>
-    </main>
+      <div class="hero__palms" aria-hidden="true">
+        <svg class="palm-1" viewBox="0 0 60 100" fill="none"><path d="M28 100V45" stroke="#2a2320" stroke-width="4"/><g stroke="#2a2320" stroke-width="4" stroke-linecap="round"><path d="M28 45C18 38 8 40 4 32"/><path d="M28 45C22 34 24 24 16 18"/><path d="M28 45C28 32 30 22 26 12"/><path d="M28 45C34 34 32 24 40 18"/><path d="M28 45C38 38 48 40 52 32"/></g></svg>
+        <svg class="palm-2" viewBox="0 0 60 100" fill="none"><path d="M28 100V50" stroke="#2a2320" stroke-width="4"/><g stroke="#2a2320" stroke-width="4" stroke-linecap="round"><path d="M28 50C18 43 8 45 4 37"/><path d="M28 50C22 39 24 29 16 23"/><path d="M28 50C28 37 30 27 26 17"/><path d="M28 50C34 39 32 29 40 23"/><path d="M28 50C38 43 48 45 52 37"/></g></svg>
+        <svg class="palm-3" viewBox="0 0 60 100" fill="none"><path d="M28 100V45" stroke="#2a2320" stroke-width="4"/><g stroke="#2a2320" stroke-width="4" stroke-linecap="round"><path d="M28 45C18 38 8 40 4 32"/><path d="M28 45C22 34 24 24 16 18"/><path d="M28 45C28 32 30 22 26 12"/><path d="M28 45C34 34 32 24 40 18"/><path d="M28 45C38 38 48 40 52 32"/></g></svg>
+        <svg class="palm-4" viewBox="0 0 60 100" fill="none"><path d="M28 100V50" stroke="#2a2320" stroke-width="4"/><g stroke="#2a2320" stroke-width="4" stroke-linecap="round"><path d="M28 50C18 43 8 45 4 37"/><path d="M28 50C22 39 24 29 16 23"/><path d="M28 50C28 37 30 27 26 17"/><path d="M28 50C34 39 32 29 40 23"/><path d="M28 50C38 43 48 45 52 37"/></g></svg>
+      </div>
+      <div class="hero__road" aria-hidden="true"></div>
 
-    <nav class="tab-bar tab-bar--cover" aria-label="Notebook Sections">
-      <button class="tab" data-target="home"><span class="tab__label">Home</span></button>
-      <button class="tab" data-target="teaching"><span class="tab__label">Teaching</span></button>
-      <button class="tab" data-target="projects"><span class="tab__label">Projects</span></button>
-      <button class="tab" data-target="writing"><span class="tab__label">Writing</span></button>
-      <button class="tab" data-target="about"><span class="tab__label">About</span></button>
-      <span class="tab tab--blank" aria-hidden="true"></span>
-      <span class="tab tab--blank" aria-hidden="true"></span>
-    </nav>
-    </div>
-  </div>
-  <main class="book is-hidden" id="book" aria-hidden="true">
-
-    <nav class="tab-bar" aria-label="Notebook Sections">
-      <button class="tab" data-target="home"><span class="tab__label">Home</span></button>
-      <button class="tab" data-target="teaching"><span class="tab__label">Teaching</span></button>
-      <button class="tab" data-target="projects"><span class="tab__label">Projects</span></button>
-      <button class="tab" data-target="writing"><span class="tab__label">Writing</span></button>
-      <button class="tab" data-target="about"><span class="tab__label">About</span></button>
-      <span class="tab tab--blank" aria-hidden="true"></span>
-      <span class="tab tab--blank" aria-hidden="true"></span>
-    </nav>
-
-    <div class="page-strip">
-      <section class="page" data-section="home" data-page="1">
-        <div class="page-inner">
-          <h2 tabindex="-1">Welcome to my Webiary</h2>
-          <p>This is my composition-notebook style webiary — a place for stories, experiments, and the work behind the work.</p>
-          <p class="page-note">Tip: use the “Open notebook” button on the cover to start reading.</p>
+      <figure class="hero__scene" role="img" aria-label="Illustration of a convertible car driving down a California coastal highway at sunset, with palm trees and the Los Angeles skyline in the background">
+        <span class="hero__tape hero__tape--tl" aria-hidden="true"></span>
+        <span class="hero__tape hero__tape--tr" aria-hidden="true"></span>
+        <div class="hero__scene-inner">
+          <div class="hero__car-wrap">
+            <svg viewBox="0 0 220 100" fill="none" aria-hidden="true">
+              <ellipse cx="110" cy="88" rx="95" ry="8" fill="rgba(0,0,0,0.25)"/>
+              <path d="M18 70C14 55 30 40 46 38L60 24C64 20 70 18 76 18H140C148 18 155 21 160 27L176 42C192 44 204 54 206 68V72H18V70Z" fill="#e0602f" stroke="#2a2320" stroke-width="3"/>
+              <path d="M74 22H138C143 22 148 24 151 28L162 40H80L74 22Z" fill="#ffe3ad" stroke="#2a2320" stroke-width="3"/>
+              <circle cx="58" cy="76" r="16" fill="#2a2320"/>
+              <circle cx="58" cy="76" r="6" fill="#f3ead6"/>
+              <circle cx="162" cy="76" r="16" fill="#2a2320"/>
+              <circle cx="162" cy="76" r="6" fill="#f3ead6"/>
+              <rect x="26" y="58" width="26" height="10" rx="3" fill="#fff8ea" stroke="#2a2320" stroke-width="2"/>
+              <text x="39" y="66" font-family="monospace" font-size="7" fill="#2a2320" text-anchor="middle">DSTNY</text>
+            </svg>
+          </div>
         </div>
-      </section>
+      </figure>
 
-      <section class="page" data-section="teaching" data-page="2">
-        <div class="page-inner">
-          <h2 tabindex="-1">Teaching</h2>
-          <p>This section holds stories and lessons from Deaf Kids Code, applied machine learning, and turning lived experience into technical skill.</p>
-        </div>
-      </section>
+      <div class="hero__caption">
+        <span class="postmark">Somewhere on the 101, California</span>
+        <h1 id="hero-title">Destiny O'Connor</h1>
+        <p>The Deafveloper — accessible tech, ASL stories, and a scrapbook of the adventures in between. LA born and raised.</p>
+      </div>
 
-      <section class="page" data-section="projects" data-page="3">
-        <div class="page-inner">
-          <h2 tabindex="-1">Projects</h2>
-          <p>Full-stack builds, experiments, and notebook drafts of ideas becoming systems.</p>
-        </div>
-      </section>
+      <a class="hero__scroll-cue" href="#map">
+        Start the road trip
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+      </a>
+    </section>
 
-      <section class="page" data-section="writing" data-page="4">
-        <div class="page-inner">
-          <h2 tabindex="-1">Writing</h2>
-          <p>Long-form reflections, webiary entries, and rabbit-hole explorations.</p>
-        </div>
-      </section>
+    <!-- ============================= MAP ============================= -->
+    <section class="map-section" id="map" aria-labelledby="map-title">
+      <div class="map-section__intro">
+        <span class="eyebrow">The Map</span>
+        <h2 id="map-title">Pick a stop</h2>
+        <p>Every stop on this road trip is a different part of my story. Tap a pin to jump there — or scroll and take the scenic route.</p>
+      </div>
 
-      <section class="page" data-section="about" data-page="5">
-        <div class="page-inner">
-          <h2 tabindex="-1">About</h2>
-          <p>About the Deafveloper, this notebook, and the work behind the work.</p>
+      <div class="map-road">
+        <div class="map-stop">
+          <a class="map-pin" href="#about" aria-label="Go to About">
+            <span class="map-pin__tape" aria-hidden="true"></span>
+            <svg class="map-pin__icon" viewBox="0 0 24 24" fill="none" stroke="#2a2320" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>
+          </a>
+          <div class="map-stop__label">
+            <h3>Home Base</h3>
+            <p>Who I am, what I build, and why accessibility is the whole point.</p>
+            <a class="map-stop__go" href="#about">Meet me →</a>
+          </div>
         </div>
-      </section>
-    </div>
+
+        <div class="map-stop">
+          <a class="map-pin" href="#projects" aria-label="Go to Projects">
+            <span class="map-pin__tape" aria-hidden="true"></span>
+            <svg class="map-pin__icon" viewBox="0 0 24 24" fill="none" stroke="#2a2320" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"/></svg>
+          </a>
+          <div class="map-stop__label">
+            <h3>The Vault</h3>
+            <p>Builds, experiments, and things I made because I was curious.</p>
+            <a class="map-stop__go" href="#projects">Open the vault →</a>
+          </div>
+        </div>
+
+        <div class="map-stop">
+          <a class="map-pin" href="#resume" aria-label="Go to Resume">
+            <span class="map-pin__tape" aria-hidden="true"></span>
+            <svg class="map-pin__icon" viewBox="0 0 24 24" fill="none" stroke="#2a2320" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>
+          </a>
+          <div class="map-stop__label">
+            <h3>The Timeline</h3>
+            <p>Where I've worked, taught, and left things better than I found them.</p>
+            <a class="map-stop__go" href="#resume">Stamp my passport →</a>
+          </div>
+        </div>
+
+        <div class="map-stop">
+          <a class="map-pin" href="#links" aria-label="Go to Links">
+            <span class="map-pin__tape" aria-hidden="true"></span>
+            <svg class="map-pin__icon" viewBox="0 0 24 24" fill="none" stroke="#2a2320" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 7l10 6 10-6"/></svg>
+          </a>
+          <div class="map-stop__label">
+            <h3>Postcard Rack</h3>
+            <p>Find me elsewhere on the internet — Instagram, TikTok, GitHub, and more.</p>
+            <a class="map-stop__go" href="#links">Grab a postcard →</a>
+          </div>
+        </div>
+
+        <div class="map-stop map-stop--notebook">
+          <a class="map-pin" href="notebook.html" aria-label="Open the Webiary blog">
+            <span class="map-pin__tape" aria-hidden="true"></span>
+            <svg class="map-pin__icon" viewBox="0 0 24 24" fill="none" stroke="#fff8ea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4.5A2.5 2.5 0 016.5 2H20v17H6.5A2.5 2.5 0 004 16.5v-12z"/><path d="M4 16.5A2.5 2.5 0 016.5 19H20"/></svg>
+          </a>
+          <div class="map-stop__label">
+            <h3>The Webiary</h3>
+            <p>My composition-notebook blog — flip through handwritten stories, case files, and teaching adventures.</p>
+            <a class="map-stop__go" href="notebook.html">Open the notebook →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================= ABOUT ============================= -->
+    <section class="spread" id="about" aria-labelledby="about-title">
+      <div class="spread__header">
+        <span class="eyebrow">Home Base</span>
+        <h2 id="about-title">About Me</h2>
+      </div>
+      <div class="spread__inner about-layout">
+        <figure class="polaroid about-photo">
+          <img src="images/deafveloper-optimized.gif" alt="Animated clip of Destiny signing 'Deafveloper' in ASL" loading="lazy" />
+          <figcaption>hi, I'm Destiny 👋</figcaption>
+        </figure>
+        <div class="about-text">
+          <p>Hello! I'm Destiny O'Connor, a Deaf technologist, educator, and community builder passionate about making technology more accessible and creating opportunities for Deaf communities.</p>
+          <p>I teach kids how to code through <strong>Deaf Kids Code</strong>, serve as an ASL instructor with programs through the American Society for Deaf Children (ASDC), and contribute to open source through the <strong>CNCF Deaf and Hard of Hearing Working Group</strong>. I also serve as Co-Lead of the CNCF Deep Roots Working Group and help lead sign language accessibility efforts within the cloud native community.</p>
+          <p>I'm a builder at heart. Whether I'm developing websites, teaching coding, creating accessibility resources, mentoring students, or working on open source projects, I love finding ways to connect people, technology, and education.</p>
+          <p>I'm also a <span class="highlight">gamer, storyteller, lifelong learner, and mom of four</span>. Life can be chaotic, but some of our best memories have come from the unexpected adventures along the way.</p>
+          <p>At the end of the day, I'm working to create a future where accessibility isn't an afterthought — where Deaf and disabled people have the tools, opportunities, and support they need to thrive.</p>
+          <div>
+            <span class="sticker-badge">Deaf Technologist</span>
+            <span class="sticker-badge">ASL Instructor</span>
+            <span class="sticker-badge">CNCF Deep Roots Co-Lead</span>
+            <span class="sticker-badge">Mom of Four</span>
+            <span class="sticker-badge">Gamer</span>
+            <span class="sticker-badge">Storyteller</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================= PROJECTS ============================= -->
+    <section class="spread spread--alt" id="projects" aria-labelledby="projects-title">
+      <div class="spread__header">
+        <span class="eyebrow">The Vault</span>
+        <h2 id="projects-title">Projects</h2>
+      </div>
+      <div class="spread__inner">
+        <div class="projects-grid">
+          <article class="project-card">
+            <img src="images/TRdiary-web.jpg" alt="Cover art for the Tom Riddle Diary interactive project" loading="lazy" />
+            <div class="project-card__body">
+              <h3>Tom Riddle Diary</h3>
+              <p>An interactive magic journal built with HTML, CSS, JavaScript, and p5.js — a book that reacts to what you write in it.</p>
+              <a class="project-card__link" href="https://github.com/Deafveloper/Tom-Riddle-Diary" target="_blank" rel="noopener noreferrer">View the code ↗</a>
+            </div>
+          </article>
+
+          <div class="project-card project-card--placeholder">
+            Next build in progress — check back soon, or peek at <a href="https://github.com/Deafveloper" target="_blank" rel="noopener noreferrer" style="color:var(--sunset-deep)">my GitHub</a> for what I'm tinkering with.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================= RESUME ============================= -->
+    <section class="spread" id="resume" aria-labelledby="resume-title">
+      <div class="spread__header">
+        <span class="eyebrow">The Timeline</span>
+        <h2 id="resume-title">Resume</h2>
+      </div>
+      <div class="spread__inner">
+        <div class="timeline">
+          <article class="timeline-entry">
+            <h3>Contributor, CNCF Deaf &amp; Hard of Hearing Working Group</h3>
+            <span class="timeline-date">2023 – Present</span>
+            <p>Previously served as Co-Chair (2023–2024), now contribute to accessibility efforts in open-source communities. Helped develop best-practice documents for conference organizers, project maintainers, and attendees, focused on inclusive communication and equitable participation at tech events.</p>
+            <ul class="timeline-tags">
+              <li>Accessibility Documentation</li>
+              <li>Inclusive Event Practices</li>
+              <li>Community Collaboration</li>
+            </ul>
+          </article>
+
+          <article class="timeline-entry">
+            <h3>Help Desk Manager &amp; Program Lead, Women Blessing Women</h3>
+            <span class="timeline-date">2023 – Present</span>
+            <p>Lead website maintenance, technical support, and visual content creation for donation campaigns, events, and client sites. Manage support tickets and communication with internal and external users.</p>
+            <ul class="timeline-tags">
+              <li>Technical Support</li>
+              <li>Web Maintenance</li>
+              <li>Graphic Design</li>
+            </ul>
+          </article>
+
+          <article class="timeline-entry">
+            <h3>Tech Evangelist, Deaf Kids Code</h3>
+            <span class="timeline-date">2023 – Present</span>
+            <p>Travel to schools to teach coding based on students' individual skill levels, designing custom curriculum for diverse learning needs. Represent Deaf Kids Code at hackathons and tech events worldwide, delivering presentations on self-advocacy and inclusion in tech, and teaching coding, AI, and digital creativity in American Sign Language.</p>
+            <ul class="timeline-tags">
+              <li>Curriculum Design in ASL</li>
+              <li>Student-Centered Instruction</li>
+              <li>Global Advocacy &amp; Speaking</li>
+            </ul>
+          </article>
+
+          <article class="timeline-entry">
+            <h3>Self-Employed Web Specialist (Freelance)</h3>
+            <span class="timeline-date">2018 – Present</span>
+            <p>Manage WordPress, Squarespace, and Shopify sites for small businesses. Handle updates, custom builds, plugin management, and client training for ongoing support and independence.</p>
+            <ul class="timeline-tags">
+              <li>WordPress &amp; Shopify</li>
+              <li>Client Training</li>
+              <li>Responsive Web Design</li>
+            </ul>
+          </article>
+
+          <article class="timeline-entry">
+            <h3>Web Content &amp; Support Specialist, Industry Blue</h3>
+            <span class="timeline-date">2019 – 2022</span>
+            <p>Maintained staffing agency websites, posted jobs, resolved technical issues, and used analytics for performance optimization. Hosted on WordPress and Bluehost.</p>
+            <ul class="timeline-tags">
+              <li>Content Management</li>
+              <li>Error Resolution</li>
+              <li>Analytics Review</li>
+            </ul>
+          </article>
+
+          <article class="timeline-entry">
+            <h3>Web Administration, NDA Contract</h3>
+            <span class="timeline-date">2022</span>
+            <p>Managed content on e-commerce websites hosted by GoDaddy. Performed audits, corrected inconsistencies, and improved user shopping experiences.</p>
+            <ul class="timeline-tags">
+              <li>GoDaddy CMS</li>
+              <li>Site Auditing</li>
+              <li>UX Optimization</li>
+            </ul>
+          </article>
+
+          <article class="timeline-entry">
+            <h3>Website Manager, Southbay Sanitations</h3>
+            <span class="timeline-date">2020 – 2021</span>
+            <p>Designed and maintained a sanitation service website using Squarespace. Oversaw service listings, invoicing integration, analytics, and performance tracking.</p>
+            <ul class="timeline-tags">
+              <li>Squarespace</li>
+              <li>Service Catalog Management</li>
+              <li>Performance Monitoring</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================= LINKS ============================= -->
+    <section class="spread spread--alt" id="links" aria-labelledby="links-title">
+      <div class="spread__header">
+        <span class="eyebrow">Postcard Rack</span>
+        <h2 id="links-title">Find Me Elsewhere</h2>
+      </div>
+      <div class="spread__inner">
+        <div class="postcards">
+          <a class="postcard" href="https://instagram.com/deafveloper" target="_blank" rel="noopener noreferrer">
+            <svg class="postcard__icon" viewBox="0 0 24 24" fill="none" stroke="#2a2320" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+            <span><span class="postcard__label">Instagram</span><span class="postcard__sub">@deafveloper</span></span>
+          </a>
+          <a class="postcard" href="https://www.tiktok.com/@deafveloper" target="_blank" rel="noopener noreferrer">
+            <svg class="postcard__icon" viewBox="0 0 24 24" fill="none" stroke="#2a2320" stroke-width="2" aria-hidden="true"><path d="M14 3v10.5a3.5 3.5 0 11-3-3.46"/><path d="M14 3c.5 2.5 2.2 4.2 4.5 4.5"/></svg>
+            <span><span class="postcard__label">TikTok</span><span class="postcard__sub">@deafveloper</span></span>
+          </a>
+          <a class="postcard" href="https://www.threads.net/@deafveloper" target="_blank" rel="noopener noreferrer">
+            <svg class="postcard__icon" viewBox="0 0 24 24" fill="none" stroke="#2a2320" stroke-width="2" aria-hidden="true"><path d="M12 21c5 0 8-3.5 8-9s-3-9-8-9-8 3.5-8 9c0 3 1.2 5.2 3 6.8"/><path d="M9 12c0-2 1.5-3 3-3s3 1 3 2.7c0 2-2 2.3-2 4.3 0 1.2 1 2 2.3 2"/></svg>
+            <span><span class="postcard__label">Threads</span><span class="postcard__sub">@deafveloper</span></span>
+          </a>
+          <a class="postcard" href="https://github.com/Deafveloper" target="_blank" rel="noopener noreferrer">
+            <svg class="postcard__icon" viewBox="0 0 24 24" fill="none" stroke="#2a2320" stroke-width="2" aria-hidden="true"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 00-1.3-3.2 4.2 4.2 0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 00-6.2 0C6.6 2.8 5.5 3.1 5.5 3.1a4.2 4.2 0 00-.1 3.2A4.6 4.6 0 004.1 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+            <span><span class="postcard__label">GitHub</span><span class="postcard__sub">@Deafveloper</span></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================= NOTEBOOK CTA ============================= -->
+    <section class="notebook-cta" aria-labelledby="notebook-cta-title">
+      <div class="notebook-cta__inner">
+        <span class="eyebrow" style="color:var(--mustard)">One more stop</span>
+        <h2 id="notebook-cta-title">Flip through my Webiary</h2>
+        <p>A composition-notebook blog of field stories, teaching adventures, and case files — handwritten, doodled, and scrapbook-taped.</p>
+        <a class="btn-notebook" href="notebook.html">
+          Open the notebook
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </section>
   </main>
-  <script src="script.js"></script>
-  <noscript>
-    <p class="noscript">This site uses JavaScript for the notebook interaction. You can still read the content, but the cover animation may not work.</p>
-  </noscript>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Destiny O'Connor · made on the road, one stop at a time</p>
+    <nav aria-label="Footer">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#resume">Resume</a>
+      <a href="#links">Links</a>
+      <a href="notebook.html">Blog</a>
+    </nav>
+  </footer>
+
+  <script src="js/script.js"></script>
 </body>
 </html>
